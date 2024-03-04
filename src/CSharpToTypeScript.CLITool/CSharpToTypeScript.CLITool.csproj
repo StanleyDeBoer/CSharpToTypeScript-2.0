@@ -13,9 +13,9 @@
     <Version>2.5.1</Version>
     <Authors>AdrianWilczynski</Authors>
     <PackageDescription>Convert C# Models, ViewModels and DTOs into their TypeScript equivalents.</PackageDescription>
-    <RepositoryUrl>https://github.com/AdrianWilczynski/CSharpToTypeScript.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/CDCavanagh/CSharpToTypeScript-2.0.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/AdrianWilczynski/CSharpToTypeScript/tree/master/src/CSharpToTypeScript.CLITool</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/CDCavanagh/CSharpToTypeScript-2.0/tree/master/src/CSharpToTypeScript.CLITool</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 

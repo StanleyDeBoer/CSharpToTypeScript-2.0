@@ -79,7 +79,7 @@ dotnet cs2ts init
 
 ## Run on Build
 
-**Sample**: https://github.com/AdrianWilczynski/CSharpToTypeScript/tree/master/samples/RunOnBuild
+**Sample**: https://github.com/CDCavanagh/CSharpToTypeScript-2.0/tree/master/samples/RunOnBuild
 
 Add `Exec` task to `.csproj` file.
 

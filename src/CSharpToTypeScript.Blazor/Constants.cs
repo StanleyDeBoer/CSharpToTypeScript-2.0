@@ -6,7 +6,7 @@ namespace CSharpToTypeScript.Blazor
     {
         public static IEnumerable<(string Name, string Url)> Sites => new[]
         {
-            ("GitHub", "https://github.com/AdrianWilczynski/CSharpToTypeScript"),
+            ("GitHub", "https://github.com/CDCavanagh/CSharpToTypeScript-2.0"),
             ("NuGet", "https://www.nuget.org/packages/CSharpToTypeScript.CLITool"),
             ("Visual Studio Marketplace", "https://marketplace.visualstudio.com/items?itemName=adrianwilczynski.csharp-to-typescript"),
             ("Azure", "https://csharptotypescript.azurewebsites.net")
