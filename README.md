@@ -1,12 +1,14 @@
 # C# to TypeScript
 
-Convert C# Models, ViewModels and DTOs into their TypeScript equivalents using webapp, .NET Core CLI Tool or VSCode extension.
+Convert C# Models, ViewModels and DTOs into their TypeScript equivalents using webapp, .NET Core CLI Tool or VSCode extension. 
+
+Note: This project is a fork from [AdrianWilczynski/CSharpToTypeScript](https://github.com/AdrianWilczynski/CSharpToTypeScript).  It appears the original project has been abandend, so the fork was created to allow additonal work to be done on the project.  
 
 ## Learn more
 
-**Visual Studio Code Extension**: https://github.com/AdrianWilczynski/CSharpToTypeScript/blob/master/src/CSharpToTypeScript.VSCodeExtension/README.md
+**Visual Studio Code Extension**: https://github.com/CDCavanagh/CSharpToTypeScript-2.0/blob/master/src/CSharpToTypeScript.VSCodeExtension/README.md
 
-**Command Line Interface**: https://github.com/AdrianWilczynski/CSharpToTypeScript/blob/master/src/CSharpToTypeScript.CLITool/README.md
+**Command Line Interface**: https://github.com/CDCavanagh/CSharpToTypeScript-2.0/blob/master/src/CSharpToTypeScript.CLITool/README.md
 
 ## Web App
 

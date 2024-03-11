@@ -3,13 +3,13 @@
 *Checkout other versions:* 
 - *Server-side web app* - [Azure](https://csharptotypescript.azurewebsites.net/ )
 - *Client-side web app* - [GitHub Pages](https://adrianwilczynski.github.io/CSharpToTypeScript/)
-- *CLI (.NET Core Global Tool)* - [NuGet](https://www.nuget.org/packages/CSharpToTypeScript.CLITool/), [GitHub](https://github.com/AdrianWilczynski/CSharpToTypeScript/tree/master/src/CSharpToTypeScript.CLITool) 
+- *CLI (.NET Core Global Tool)* - [NuGet](https://www.nuget.org/packages/CSharpToTypeScript.CLITool/), [GitHub](https://github.com/CDCavanagh/CSharpToTypeScript-2.0/tree/master/src/CSharpToTypeScript.CLITool) 
 
 Convert C# Models, ViewModels and DTOs into their TypeScript equivalents.
 
-![In Action](https://raw.githubusercontent.com/AdrianWilczynski/CSharpToTypeScript/master/src/CSharpToTypeScript.VSCodeExtension/img/inAction.gif)
+![In Action](https://raw.githubusercontent.com/CDCavanagh/CSharpToTypeScript-2.0/master/src/CSharpToTypeScript.VSCodeExtension/img/inAction.gif)
 
-![Conversion Example](https://raw.githubusercontent.com/AdrianWilczynski/CSharpToTypeScript/master/src/CSharpToTypeScript.VSCodeExtension/img/example.png)
+![Conversion Example](https://raw.githubusercontent.com/CDCavanagh/CSharpToTypeScript-2.0/master/src/CSharpToTypeScript.VSCodeExtension/img/example.png)
 
 ## Commands
 
