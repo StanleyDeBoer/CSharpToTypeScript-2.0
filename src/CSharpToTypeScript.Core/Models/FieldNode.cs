@@ -22,6 +22,7 @@ namespace CSharpToTypeScript.Core.Models
 
         public string WriteTypeScript(CodeConversionOptions options, Context context)
             => // name
+            "public ".If(options.PublicModifier) +
             (JsonPropertyName?
                 .EscapeBackslashes()
                 .EscapeQuotes(options.QuotationMark)
