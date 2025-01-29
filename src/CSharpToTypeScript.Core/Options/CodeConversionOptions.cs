@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace CSharpToTypeScript.Core.Options
 {
     public class CodeConversionOptions : ModuleNameConversionOptions
@@ -7,7 +9,7 @@ namespace CSharpToTypeScript.Core.Options
             bool toCamelCase = true, bool removeInterfacePrefix = true, ImportGenerationMode importGenerationMode = ImportGenerationMode.None,
             bool useKebabCase = false, bool appendModelSuffix = false, QuotationMark quotationMark = QuotationMark.Double,
             bool appendNewLine = false, bool stringEnums = false, bool enumStringToCamelCase = false,
-            OutputType outputType = OutputType.Interface, bool publicModifier = false)
+            OutputType outputType = OutputType.Interface, bool publicModifier = false, Dictionary<string, string> imports = null)
         : base(useKebabCase, appendModelSuffix, removeInterfacePrefix)
         {
             Export = export;
@@ -23,6 +25,7 @@ namespace CSharpToTypeScript.Core.Options
             EnumStringToCamelCase = enumStringToCamelCase;
             OutputType = outputType;
             PublicModifier = publicModifier;
+            Imports = imports;
         }
 
         public bool Export { get; set; }
@@ -38,5 +41,6 @@ namespace CSharpToTypeScript.Core.Options
         public bool EnumStringToCamelCase { get; set; }
         public OutputType OutputType { get; set; }
         public bool PublicModifier { get; set; }
+        public Dictionary<string, string> Imports { get; set; }
     }
 }

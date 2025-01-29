@@ -31,7 +31,17 @@ namespace CSharpToTypeScript.Core.Models
                         // module
                         + " from " + ("./" + ModuleNameTransformation.Transform(i, options)).InQuotes(options.QuotationMark) + ";")
                     .Distinct().LineByLine()
-                + EmptyLine).If(Imports.Any() && options.ImportGenerationMode != ImportGenerationMode.None)
+                + EmptyLine).If(Imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Simple)
+                +
+                                (Imports.Where(i => options.Imports.ContainsKey(i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix)))
+                                .Select(i =>
+
+                        // type
+                        "import { " + i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix) + " }"
+                        // module
+                        + " from " + options.Imports[i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix)].InQuotes(options.QuotationMark) + ";")
+                    .Distinct().LineByLine()
+                + EmptyLine).If(Imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Config)
                 // types
                 + RootNodes.WriteTypeScript(options, context).ToEmptyLineSeparatedList()
                 // empty line at the end
