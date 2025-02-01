@@ -71,6 +71,10 @@ namespace CSharpToTypeScript.CLITool.Commands
         public bool PublicModifier { get; set; }
         public Dictionary<string, string> Imports { get; set; }
 
+        [Option(ShortName = "ao", Description = "Make all fields optional")]
+        public bool AllOptional { get; set; }
+
+
         private void OnBeforeArgumentsSet()
         {
             if (ConfigurationFile.Load() is Configuration configuration)

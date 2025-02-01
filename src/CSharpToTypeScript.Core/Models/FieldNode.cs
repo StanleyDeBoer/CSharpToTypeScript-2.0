@@ -29,7 +29,7 @@ namespace CSharpToTypeScript.Core.Models
                 .TransformIf(!JsonPropertyName.IsValidIdentifier(), StringUtilities.InQuotes(options.QuotationMark))
             ?? Name.TransformIf(options.ToCamelCase, StringUtilities.ToCamelCase))
             // separator
-            + "?".If(Type.IsOptional(options, out _)) + ": "
+            + "?".If(Type.IsOptional(options, out _) || options.AllOptional) + ": "
             // type
             + (Type.IsOptional(options, out var of) ? of.WriteTypeScript(options, context) : Type.WriteTypeScript(options, context)) + ";";
     }
