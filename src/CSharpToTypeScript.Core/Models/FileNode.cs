@@ -32,7 +32,7 @@ namespace CSharpToTypeScript.Core.Models
                         + " from " + ("./" + ModuleNameTransformation.Transform(i, options)).InQuotes(options.QuotationMark) + ";")
                     .Distinct().LineByLine()
                 + EmptyLine).If(Imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Simple)
-                + (Imports.Select(i => i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix))
+                + (Imports.Select(i => i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix)).OrderBy(i => i)
                             .Where(i => options.Imports?.ContainsKey(i) == true)
                           .Select(i =>
                         // type
