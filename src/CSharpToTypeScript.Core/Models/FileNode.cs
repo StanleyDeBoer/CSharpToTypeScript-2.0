@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CSharpToTypeScript.Core.Options;
@@ -33,12 +34,18 @@ namespace CSharpToTypeScript.Core.Models
                     .Distinct().LineByLine()
                 + EmptyLine).If(Imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Simple)
                 + (Imports.Select(i => i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix)).OrderBy(i => i)
-                            .Where(i => options.Imports?.ContainsKey(i) == true)
-                          .Select(i =>
-                        // type
-                        "import { " + i + " }"
-                        // module
-                        + " from " + options.Imports[i].InQuotes(options.QuotationMark) + ";")
+                          //  .Where(i => options.Imports?.ContainsKey(i) == true)
+                          .Select(i => {
+                                if (options.ImportGenerationMode == ImportGenerationMode.Config && options.Imports?.ContainsKey(i) != true)
+                              {
+                                  throw new Exception($"No import config found for {i}");
+                              }
+                              // type
+                              return "import { " + i + " }"
+                              // module
+                              + " from " + options.Imports[i].InQuotes(options.QuotationMark) + ";";
+                        })
+
                     .Distinct().LineByLine()
                 + EmptyLine).If(Imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Config)
                 // types
