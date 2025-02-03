@@ -14,14 +14,12 @@ namespace CSharpToTypeScript.CLITool.Utilities
             Converters = new[] { new StringEnumConverter(new CamelCaseNamingStrategy()) }
         };
 
-        public const string FileName = "cs2tsconfig.json";
-
-        public static Configuration Load()
-            => File.Exists(FileName)
-            ? JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(FileName), JsonSerializerSettings)
+        public static Configuration Load(string fileName)
+            => File.Exists(fileName)
+            ? JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(fileName), JsonSerializerSettings)
             : null;
 
-        public static void Create(Configuration configuration)
-            => File.WriteAllText(FileName, JsonConvert.SerializeObject(configuration, JsonSerializerSettings));
+        public static void Create(string fileName, Configuration configuration)
+            => File.WriteAllText(fileName, JsonConvert.SerializeObject(configuration, JsonSerializerSettings));
     }
 }

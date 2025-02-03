@@ -74,10 +74,13 @@ namespace CSharpToTypeScript.CLITool.Commands
         [Option(ShortName = "ao", Description = "Make all fields optional")]
         public bool AllOptional { get; set; }
 
+        [Option(ShortName = "cf", Description = "Config file")]
+        public string ConfigFile { get; set; } = "cs2tsconfig.json";
+
 
         private void OnBeforeArgumentsSet()
         {
-            if (ConfigurationFile.Load() is Configuration configuration)
+            if (ConfigurationFile.Load(ConfigFile) is Configuration configuration)
             {
                 configuration.Override(this);
             }
