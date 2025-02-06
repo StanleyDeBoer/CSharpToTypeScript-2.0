@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using CSharpToTypeScript.Core.Options;
 using CSharpToTypeScript.Core.Transformations;
@@ -40,10 +41,11 @@ namespace CSharpToTypeScript.Core.Models
                               {
                                   throw new Exception($"No import config found for {i}");
                               }
+                              string importPath = Path.ChangeExtension(Path.GetRelativePath(Path.GetDirectoryName(options.OutputLocation), options.Imports[i]), null);
                               // type
                               return "import { " + i + " }"
                               // module
-                              + " from " + options.Imports[i].InQuotes(options.QuotationMark) + ";";
+                              + " from " + ("./".If(!importPath.StartsWith(".")) + importPath.Replace("\\","/")).InQuotes(options.QuotationMark) + ";";
                         })
 
                     .Distinct().LineByLine()
