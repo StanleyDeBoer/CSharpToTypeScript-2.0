@@ -77,6 +77,8 @@ namespace CSharpToTypeScript.CLITool.Commands
         [Option(ShortName = "cf", Description = "Config file")]
         public string ConfigFile { get; set; } = "cs2tsconfig.json";
 
+        [Option(ShortName ="ty", Description = "The types to export")]
+        public string[] Types { get; set; } = null;
 
         private void OnBeforeArgumentsSet()
         {

@@ -11,7 +11,7 @@ namespace CSharpToTypeScript.Core.Options
             bool appendNewLine = false, bool stringEnums = false, bool enumStringToCamelCase = false,
             OutputType outputType = OutputType.Interface, bool publicModifier = false, 
             Dictionary<string, string> imports = null, bool allOptional = false
-            , string outputLocation = null)
+            , string outputLocation = null, string[] types = null)
         : base(useKebabCase, appendModelSuffix, removeInterfacePrefix)
         {
             Export = export;
@@ -30,6 +30,7 @@ namespace CSharpToTypeScript.Core.Options
             Imports = imports;
             AllOptional = allOptional;
             OutputLocation = outputLocation;
+            Types = types;
         }
 
         public bool Export { get; set; }
@@ -48,5 +49,6 @@ namespace CSharpToTypeScript.Core.Options
         public Dictionary<string, string> Imports { get; set; }
         public bool AllOptional { get; set; }
         public string OutputLocation { get; set; } //Used for determining import paths
+        public string[] Types { get; set; }
     }
 }

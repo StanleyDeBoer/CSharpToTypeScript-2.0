@@ -51,7 +51,9 @@ namespace CSharpToTypeScript.Core.Models
                     .Distinct().LineByLine()
                 + EmptyLine).If(Imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Config)
                 // types
-                + RootNodes.WriteTypeScript(options, context).ToEmptyLineSeparatedList()
+                + RootNodes
+                    .Where(rn => options.Types == null || options.Types.Length == 0 || options.Types.Contains(rn.Name))
+                    .WriteTypeScript(options, context).ToEmptyLineSeparatedList()
                 // empty line at the end
                 + NewLine.If(options.AppendNewLine);
         }
