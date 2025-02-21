@@ -2,6 +2,7 @@ using CSharpToTypeScript.CLITool.Utilities;
 using CSharpToTypeScript.CLITool.Validation;
 using CSharpToTypeScript.Core.Options;
 using McMaster.Extensions.CommandLineUtils;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace CSharpToTypeScript.CLITool.Commands
@@ -77,7 +78,7 @@ namespace CSharpToTypeScript.CLITool.Commands
         [Option(ShortName = "cf", Description = "Config file")]
         public string ConfigFile { get; set; } = "cs2tsconfig.json";
 
-        [Option(ShortName ="ty", Description = "The types to export")]
+        [Option(ShortName = "ty", Description = "The types to export")]
         public string[] Types { get; set; } = null;
 
         private void OnBeforeArgumentsSet()

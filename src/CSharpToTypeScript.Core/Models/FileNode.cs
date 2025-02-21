@@ -20,21 +20,20 @@ namespace CSharpToTypeScript.Core.Models
 
         public IEnumerable<string> Requires => RootNodes.SelectMany(r => r.Requires).Distinct();
 
-        public IEnumerable<string> Imports => Requires.Except(RootNodes.Select(r => r.Name));
-
         public string WriteTypeScript(CodeConversionOptions options)
         {
             var context = new Context();
+            var imports = Requires.Except(RootNodes.Where(rn => options.Types == null || options.Types.Length == 0 || options.Types.Contains(rn.Name)).Select(r => r.Name));
 
             return // imports
-                (Imports.Select(i =>
+                (imports.Select(i =>
                         // type
                         "import { " + i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix) + " }"
                         // module
                         + " from " + ("./" + ModuleNameTransformation.Transform(i, options)).InQuotes(options.QuotationMark) + ";")
                     .Distinct().LineByLine()
-                + EmptyLine).If(Imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Simple)
-                + (Imports.Select(i => i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix)).OrderBy(i => i)
+                + EmptyLine).If(imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Simple)
+                + (imports.Select(i => i.TransformIf(options.RemoveInterfacePrefix, StringUtilities.RemoveInterfacePrefix)).OrderBy(i => i)
                           //  .Where(i => options.Imports?.ContainsKey(i) == true)
                           .Select(i => {
                                 if (options.ImportGenerationMode == ImportGenerationMode.Config && options.Imports?.ContainsKey(i) != true)
@@ -49,7 +48,7 @@ namespace CSharpToTypeScript.Core.Models
                         })
 
                     .Distinct().LineByLine()
-                + EmptyLine).If(Imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Config)
+                + EmptyLine).If(imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Config)
                 // types
                 + RootNodes
                     .Where(rn => options.Types == null || options.Types.Length == 0 || options.Types.Contains(rn.Name))
