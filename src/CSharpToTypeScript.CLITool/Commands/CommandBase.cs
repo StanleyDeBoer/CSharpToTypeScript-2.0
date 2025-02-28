@@ -80,6 +80,9 @@ namespace CSharpToTypeScript.CLITool.Commands
 
         [Option(ShortName = "ty", Description = "The types to export")]
         public string[] Types { get; set; } = null;
+        
+        [Option(ShortName = "at", Description = "Additional text to add to the exported class")]
+        public string AddtionalText { get; set; } = null;
 
         private void OnBeforeArgumentsSet()
         {

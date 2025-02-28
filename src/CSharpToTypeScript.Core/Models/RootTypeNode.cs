@@ -51,6 +51,7 @@ namespace CSharpToTypeScript.Core.Models
                 + " {" + NewLine
                 // fields
                 + Fields.WriteTypeScript(options, context).Indent(options.UseTabs, options.TabSize).LineByLine() + NewLine
+                + (Indentation(options.UseTabs, options.TabSize) + options.AddtionalText + NewLine).If(options.AddtionalText != null && options.AddtionalText.Length >= 0)
                 + "}";
         }
     }

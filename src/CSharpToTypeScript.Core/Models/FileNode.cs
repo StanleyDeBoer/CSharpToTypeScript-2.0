@@ -18,12 +18,11 @@ namespace CSharpToTypeScript.Core.Models
 
         public IEnumerable<RootNode> RootNodes { get; }
 
-        public IEnumerable<string> Requires => RootNodes.SelectMany(r => r.Requires).Distinct();
-
         public string WriteTypeScript(CodeConversionOptions options)
         {
+            var rootsToExport = RootNodes.Where(rn => options.Types == null || options.Types.Length == 0 || options.Types.Contains(rn.Name));
             var context = new Context();
-            var imports = Requires.Except(RootNodes.Where(rn => options.Types == null || options.Types.Length == 0 || options.Types.Contains(rn.Name)).Select(r => r.Name));
+            var imports = rootsToExport.SelectMany(r => r.Requires).Distinct().Except(rootsToExport.Select(r => r.Name));
 
             return // imports
                 (imports.Select(i =>
@@ -50,9 +49,7 @@ namespace CSharpToTypeScript.Core.Models
                     .Distinct().LineByLine()
                 + EmptyLine).If(imports.Any() && options.ImportGenerationMode == ImportGenerationMode.Config)
                 // types
-                + RootNodes
-                    .Where(rn => options.Types == null || options.Types.Length == 0 || options.Types.Contains(rn.Name))
-                    .WriteTypeScript(options, context).ToEmptyLineSeparatedList()
+                + rootsToExport.WriteTypeScript(options, context).ToEmptyLineSeparatedList()
                 // empty line at the end
                 + NewLine.If(options.AppendNewLine);
         }

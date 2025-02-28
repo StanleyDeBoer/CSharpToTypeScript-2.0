@@ -9,7 +9,7 @@ namespace CSharpToTypeScript.CLITool.Validation
     public class ConfigurationFileDoesNotExist : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-            => File.Exists(ConfigurationFile.FileName)
+            => File.Exists("cs2tsconfig.json")
             ? new ValidationResult("Configuration file already exists.")
             : ValidationResult.Success;
     }

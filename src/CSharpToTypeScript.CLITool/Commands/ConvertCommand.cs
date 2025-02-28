@@ -26,7 +26,7 @@ namespace CSharpToTypeScript.CLITool.Commands
             => new CodeConversionOptions(!SkipExport, UseTabs, TabSize, ConvertDatesTo, ConvertNullablesTo,
                 !PreserveCasing, !PreserveInterfacePrefix,
                 ImportGeneration, UseKebabCase, AppendModelSuffix, QuotationMark, AppendNewLine, 
-                false , false, OutputType, PublicModifier, Imports, AllOptional, Output,Types);
+                false , false, OutputType, PublicModifier, Imports, AllOptional, Output, Types, AddtionalText);
 
         public void OnExecute()
         {

@@ -9,6 +9,7 @@ namespace CSharpToTypeScript.Core.Services
             var converter = new QualifiedUnpacker();
 
             converter.SetNext(new ByteArrayHandler())
+                .SetNext(new DynamicConverter())
                 .SetNext(new StringConverter())
                 .SetNext(new DateConverter())
                 .SetNext(new NumberConverter())
@@ -18,6 +19,7 @@ namespace CSharpToTypeScript.Core.Services
                 .SetNext(new DictionaryConverter(converter))
                 .SetNext(new NullableConverter(converter))
                 .SetNext(new GenericConverter(converter))
+
                 .SetNext(new CustomConverter());
 
             return converter;

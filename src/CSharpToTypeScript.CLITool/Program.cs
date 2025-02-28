@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using CSharpToTypeScript.CLITool.Commands;
+using CSharpToTypeScript.CLITool.Utilities;
 using CSharpToTypeScript.Core.DependencyInjection;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,15 +34,12 @@ namespace CSharpToTypeScript.CLITool
 #pragma warning disable CS0168
             catch (Exception ex)
             {
-#if RELEASE
+
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Error.WriteLine(string.Join(" ---> ", ExceptionMessage.Flatten(ex).Distinct()));
                 Console.ResetColor();
 
                 return 1;
-#else
-                throw;
-#endif
             }
         }
     }
