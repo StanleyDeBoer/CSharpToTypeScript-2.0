@@ -36,6 +36,7 @@ namespace CSharpToTypeScript.Core.Models
         {
             context = context.Clone();
             context.GenericTypeParameters = GenericTypeParameters;
+            context.OutputType = !FromInterface && options.OutputType == OutputType.Class ? OutputType.Class : OutputType.Interface;
 
             // keywords
             return "export ".If(options.Export)
